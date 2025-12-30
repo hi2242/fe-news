@@ -4,6 +4,22 @@
   padding-block: 100px;
   padding-inline: 300px;
 }
+  --display-bold24: 700 24px 'Pretendard';
+  --display-bold16: 700 16px 'Pretendard';
+  --display-bold14: 700 14px 'Pretendard';
+  --display-bold12: 700 12px 'Pretendard';
+  --display-medium16: 500 16px 'Pretendard'/22px 'Pretendard';
+  --display-medium14: 500 14px 'Pretendard';
+  --display-medium12: 500 12px 'Pretendard';
+  --selected-bold16: 700 16px 'Pretendard';
+  --selected-bold14: 700 14px 'Pretendard';
+  --selected-medium16: 500 16px/22px 'Pretendard';
+  --selected-medium14: 500 14px 'Pretendard';
+  --available-medium16: 500 16px/22px 'Pretendard';
+  --available-medium14: 500 14px 'Pretendard';
+  --available-medium12: 500 12px 'Pretendard';
+  --hover-medium16: 500 16px 'Pretendard';
+  --hover-medium14: 500 14px 'Pretendard';
 
 .upperTab {
   display: flex;
@@ -32,8 +48,7 @@
 }
 
 .displayText {
-  font-size: 24px;
-  font-weight: 700;
+  font: var(--display-bold24);
 }
 
 .newspaperIcon {
@@ -42,7 +57,6 @@
 }
 
 .todaysDate {
-  font-size: 16;
-  font-weight: 500;
+  font: var(--display-medium16);
   color: var(--text-default);
 }
