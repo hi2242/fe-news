@@ -11,11 +11,13 @@
   justify-content: space-between;
 }
 
-.title {
+#title {
   display: flex;
   align-items: center;
   justify-content: space-between;
   column-gap: 8px;
+  border: 0px;
+  background: white;
 }
 
 .displayText {
@@ -32,17 +34,4 @@
   font-size: 16;
   font-weight: 500;
   color: #5F6276;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
