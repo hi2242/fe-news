@@ -179,6 +179,8 @@
 
 
 ## 커밋 컨벤션
+  - init : 초기 설정
+  - design : 디자인 구현
   - feat (feature) : 기능 구현
   - fix (bug fix) : 버그 수정
   - docs (documentation) : 문서 관련 사항
