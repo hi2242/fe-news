@@ -1,9 +1,13 @@
 :root {
   font-family: 'Pretendard';
   src: url('./assets/fonts/PretendardVariable.woff2') format('woff2');
-  padding-block: 100px;
-  padding-inline: 300px;
-}
+  margin-top: 100px;
+  margin-inline: auto;
+
+  width: 1280px;
+  height: 720px;
+  justify-items: center;
+
   --display-bold24: 700 24px 'Pretendard';
   --display-bold16: 700 16px 'Pretendard';
   --display-bold14: 700 14px 'Pretendard';
@@ -36,6 +40,11 @@
   --text-strong: #14212B;
   --surface-brand-alt: #7890E7;
   --surface-brand-default: #4362D0;
+}
+
+#view {
+  width: 930px;
+  display: block;
 }
 
 #title {
