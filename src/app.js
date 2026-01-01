@@ -1,6 +1,7 @@
 import '@/assets/css/style.css'
 import { getDate } from '@/js/Date.js';
 import { reload } from '@/js/Reload.js';
+import { addCell } from '@/js/Cell.js';
 import TitleLogo from '@/assets/images/light_mode_logo/title_logo.png';
 import GridView from '@/assets/images/light_mode_logo/grid-view.png';
 import ListView from '@/assets/images/light_mode_logo/list-view.png';
@@ -55,3 +56,4 @@ document.querySelector('#app').innerHTML = `
 `
 
 reload(document.querySelector('#title'));
+addCell();
