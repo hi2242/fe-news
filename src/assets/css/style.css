@@ -162,7 +162,7 @@
 
 #viewArea > .center > .grid-cell {
   display: block;
-  text-align: center;
+  justify-self: center;
   align-self: center;
 }
 
