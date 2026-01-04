@@ -27,6 +27,6 @@ export function rollingHeadLine() {
     };
 
     repeatRolling(leftTargetElement, pressHtmlString, titleHtmlString, indexWrapper);
-    sleep(1000);
+    sleepCurrentTime(1000);
     repeatRolling(rightTargetElement, pressHtmlString, titleHtmlString, indexWrapper);
 }
