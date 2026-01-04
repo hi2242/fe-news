@@ -1,6 +1,7 @@
 import '@/assets/css/style.css'
 import { getDate } from '@/js/Date.js';
 import { addCell } from '@/js/Cell.js';
+import { rollingHeadLine } from '@/js/Rolling';
 import TitleLogo from '@/assets/images/light_mode_logo/title_logo.png';
 import GridView from '@/assets/images/light_mode_logo/grid-view.png';
 import ListView from '@/assets/images/light_mode_logo/list-view.png';
@@ -21,14 +22,8 @@ document.querySelector('#app').innerHTML = `
       </div>
     </div>
     <ul id="autoRollingNewsBar">
-      <li class="left">
-        <div class="press">연합뉴스</div>
-        <div class="newsTitle">[속보] 도심 공원 '조용한 독서존' 시범 운영... 시민 호응 이어져</div>
-      </li>
-      <li class="right">
-        <div class="press">서울경제</div>
-        <div class="newsTitle">착한 소비 캠페인, 지역 상권 회복에 긍정적 영향</div>
-      </li>
+      <li class="left"></li>
+      <li class="right"></li>
     </ul>
     <div id="gridView">
       <div id="tabAndViewer">
@@ -55,3 +50,4 @@ document.querySelector('#app').innerHTML = `
 `
 
 addCell();
+rollingHeadLine();
