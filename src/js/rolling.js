@@ -1,12 +1,5 @@
 import data from '@/assets/data/pressData.json' assert{ type: 'json' };
 
-function sleepCurrentTime(ms) {
-    const wakeUpTime = Date.now() + ms;
-    while (Date.now() < wakeUpTime) {
-
-    }
-}
-
 function setHeadLine(element, press, title, wrapper) {
     if (wrapper.value === press.length) {
         wrapper.value = 0;
@@ -29,7 +22,12 @@ export function rollingHeadLine() {
         value: 1
     };
 
-    repeatRolling(leftTargetElement, pressHtmlString, titleHtmlString, indexWrapper);
-    sleepCurrentTime(1000);
-    repeatRolling(rightTargetElement, pressHtmlString, titleHtmlString, indexWrapper);
+    initHeadLine();
+    setTimeout(() => {
+        repeatRolling(leftTargetElement, pressHtmlString, titleHtmlString, indexWrapper, hoverState, rightTimer);
+    }, 5000);
+
+    setTimeout(() => {
+        repeatRolling(rightTargetElement, pressHtmlString, titleHtmlString, indexWrapper, hoverState, rightTimer);
+    }, 6000);
 }
