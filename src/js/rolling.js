@@ -32,31 +32,66 @@ export function rollingHeadLine() {
         indexWrapper.value += 1;
     }
 
-    function setHoverEvent(element, state) {
-        element.addEventListener('mouseenter', () => {
-            state.value = true;
+    function animateCycle(element, delay, timerKey) {
+        if (hoverState.value) return;
+
+        timers[timerKey] = setTimeout(() => {
+            if (hoverState.value) return;
+
+            const pressTarget = element.querySelector('.press');
+            const titleTarget = element.querySelector('.newsTitle');
+
+            pressTarget.classList.add('rollup-out');
+            titleTarget.classList.add('rollup-out');
+
+            const handleAnimationEnd = () => {
+                pressTarget.removeEventListener('animationend', handleAnimationEnd);
+
+                pressTarget.classList.remove('rollup-out');
+                titleTarget.classList.remove('rollup-out');
+
+                updateContent(element, pressHtmlString, titleHtmlString, indexWrapper);
+
+                const newPress = element.querySelector('.press');
+                const newTitle = element.querySelector('.newsTitle');
+
+                indexWrapper.value += 1;
+
+                newPress.classList.add('rollup-in');
+                newTitle.classList.add('rollup-in');
+
+                newPress.addEventListener('animationend', () => {
+                    newPress.classList.remove('rollup-in');
+                    newTitle.classList.remove('rollup-in');
+
+                    animateCycle(element, 5000, timerKey);
+                }, { once: true });
+            };
+
+            pressTarget.addEventListener('animationend', handleAnimationEnd);
+        }, delay);
+    }
+
+    function setHoverEvent() {
+        bothTargetElement.addEventListener(('mouseenter'), () => {
+            hoverState.value = true;
+            if (timers.left) clearTimeout(timers.left);
+            if (timers.right) clearTimeout(timers.right);
         });
 
-        element.addEventListener('mouseleave', () => {
-            state.value = false;
-            if (leftTimer.value !== null) {
-                clearTimeout(leftTimer.value);
-                leftTimer.value = null;
+        bothTargetElement.addEventListener('mouseleave', () => {
+            hoverState.value = false;
+
+            const leftAnimating = leftTargetElement.querySelector('.rollup-out, .rollup-in');
+            const rightAnimating = rightTargetElement.querySelector('.rollup-out, .rollup-in');
+
+            if (!leftAnimating) {
+                animateCycle(leftTargetElement, 5000, 'left');
             }
 
-            if (rightTimer.value !== null) {
-                clearTimeout(rightTimer.value);
-                rightTimer.value = null;
+            if (!rightAnimating) {
+                animateCycle(rightTargetElement, 6000, 'right');
             }
-
-            setTimeout(() => {
-                repeatRolling(leftTargetElement, pressHtmlString, titleHtmlString, indexWrapper, hoverState, rightTimer);
-            }, 5000);
-
-            setTimeout(() => {
-                repeatRolling(rightTargetElement, pressHtmlString, titleHtmlString, indexWrapper, hoverState, rightTimer);
-            }, 6000);
-            
         });
     }
 
@@ -64,13 +99,9 @@ export function rollingHeadLine() {
 
     }
     
-    setHoverEvent(bothTargetElement, hoverState);
     initHeadLine();
-    setTimeout(() => {
-        repeatRolling(leftTargetElement, pressHtmlString, titleHtmlString, indexWrapper, hoverState, rightTimer);
-    }, 5000);
+    setHoverEvent();
 
-    setTimeout(() => {
-        repeatRolling(rightTargetElement, pressHtmlString, titleHtmlString, indexWrapper, hoverState, rightTimer);
-    }, 6000);
+    animateCycle(leftTargetElement, 5000, 'left');
+    animateCycle(rightTargetElement, 6000, 'right');
 }
