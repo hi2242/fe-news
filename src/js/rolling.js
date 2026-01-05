@@ -8,6 +8,9 @@ function sleepCurrentTime(ms) {
 }
 
 function setHeadLine(element, press, title, wrapper) {
+    if (wrapper.value === press.length) {
+        wrapper.value = 0;
+    }
     element.innerHTML = `${press[wrapper.value]}${title[wrapper.value]}`;
     wrapper.value += 1;
 }
