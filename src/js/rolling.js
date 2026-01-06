@@ -1,7 +1,5 @@
 import data from '@/assets/data/pressData.json' assert{ type: 'json' };
-
-const LEFT_RIGHT_INTERVAL = 1000;
-const ROLL_INTERVAL = 5000;
+import { ROLLING_CONSTANTS } from '@/constants';
 
 export class RollingNewsBar {
     constructor(selector) {
@@ -58,8 +56,8 @@ export class RollingNewsBar {
 
     _scheduleAnimation() {
         if (this.isPaused) return;
-        this.timers.left = setTimeout(() => this._animate('left'), ROLL_INTERVAL);
-        this.timers.right = setTimeout(() => this._animate('right'), ROLL_INTERVAL + LEFT_RIGHT_INTERVAL);
+        this.timers.left = setTimeout(() => this._animate('left'), ROLLING_CONSTANTS.ROLL_INTERVAL);
+        this.timers.right = setTimeout(() => this._animate('right'), ROLLING_CONSTANTS.ROLL_INTERVAL + ROLLING_CONSTANTS.LEFT_RIGHT_INTERVAL);
     }
 
     _addAnimation(element, className) {
@@ -94,7 +92,7 @@ export class RollingNewsBar {
             this._addAnimation(newInnerElement, 'rollup-in');
             newInnerElement.press.addEventListener('animationend', () => {
                 this._removeAnimation(newInnerElement, 'rollup-in');
-                this.timers[target] = setTimeout(() => this._animate(target), ROLL_INTERVAL);
+                this.timers[target] = setTimeout(() => this._animate(target), ROLLING_CONSTANTS.ROLL_INTERVAL);
             }, { once: true });
         }, { once: true });
     }
@@ -112,11 +110,11 @@ export class RollingNewsBar {
 
         if (!leftAnimating) {
             clearTimeout(this.timers.left);
-            this.timers.left = setTimeout(() => this._animate('left'), ROLL_INTERVAL);
+            this.timers.left = setTimeout(() => this._animate('left'), ROLLING_CONSTANTS.ROLL_INTERVAL);
         }
         if (!rightAnimating) {
             clearTimeout(this.timers.right);
-            this.timers.right = setTimeout(() => this._animate('right'), ROLL_INTERVAL + LEFT_RIGHT_INTERVAL);
+            this.timers.right = setTimeout(() => this._animate('right'), ROLLING_CONSTANTS.ROLL_INTERVAL + ROLLING_CONSTANTS.LEFT_RIGHT_INTERVAL);
         }
     }
 

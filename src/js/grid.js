@@ -1,3 +1,5 @@
+import { GRID_CONSTANTS } from '@/constants';
+
 const pickRandomLogo = (cellCount, logoCount) => {
     const newsBrandList = [];
 
@@ -16,9 +18,8 @@ const createCellHTML = (press) => {
 }
 
 export function renderGrid(target = '#viewArea .center') {
-    const CELL_COUNT = 24;
-    const LOGO_COUNT = 94;
-    const pressList = pickRandomLogo(CELL_COUNT, LOGO_COUNT);
+
+    const pressList = pickRandomLogo(GRID_CONSTANTS.CELL_COUNT, GRID_CONSTANTS.LOGO_COUNT);
     const htmlString = pressList.map(createCellHTML).join('');
 
     const targetElement = document.querySelector(target);
