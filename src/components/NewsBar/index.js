@@ -1,5 +1,5 @@
 import '@/components/NewsBar/style.css';
-import { RollingNewsBar } from '@/js/rolling';
+import { RollingNewsBar } from '@/components/NewsBar/Rolling';
 
 export const NewsBar = () => {
     return `

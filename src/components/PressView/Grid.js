@@ -18,7 +18,6 @@ const createCellHTML = (press) => {
 }
 
 export function renderGrid(target = '#viewArea .center') {
-
     const pressList = pickRandomLogo(GRID_CONSTANTS.CELL_COUNT, GRID_CONSTANTS.LOGO_COUNT);
     const htmlString = pressList.map(createCellHTML).join('');
 
