@@ -6,6 +6,7 @@ export const ROLLING_CONSTANTS = {
 export const GRID_CONSTANTS = {
     CELL_COUNT: 24,
     LOGO_COUNT: 94,
+    NEWS_BRAND_LIST: Array.from({ length: 96 }, (_, i) => `images/light_mode_logo/light_brand_logo_${i}.png`),
 }
 
 export const DATE_CONSTANTS = {

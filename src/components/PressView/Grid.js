@@ -12,6 +12,7 @@ const pickRandomLogo = (cellCount, logoCount) => {
 
 const createCellHTML = (press) => {
     const path = `images/light_mode_logo/light_brand_logo_${press}.png`
+    const path = GRID_CONSTANTS.NEWS_BRAND_LIST[press];
     return `
         <img class="grid-cell" src="${path}">
     `
