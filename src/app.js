@@ -3,6 +3,7 @@ import { Header } from '@/components/Header';
 import { PressView } from '@/components/PressView';
 import { NewsBar, rollingHeadLine } from '@/components/NewsBar';
 import { renderGrid } from '@/components/PressView/Grid';
+import { Label } from '@/components/Label';
 
 
 const app = document.getElementById('app');
